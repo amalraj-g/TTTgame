@@ -22,7 +22,7 @@ h2{
     margin: 20px;
 }
 
-.container{
+.game--container{
   display: grid;
   grid-template-columns: repeat(3,auto);
 }
@@ -40,7 +40,7 @@ h2{
   font-size: 25px;
 }
 
-#status{
+#game--status{
   padding: 20px;
   font-size: 25px;
   font-weight: 500;

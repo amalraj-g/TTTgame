@@ -1,5 +1,5 @@
 const cells=document.querySelectorAll(".cell");
-const playStatus=document.querySelector("#status");
+const playStatus=document.querySelector("#game--status");
 const btnRestart=document.querySelector("#restart");
 let imageX="<img src='images/x.png'>";
 let imageO="<img src='images/o.png'>";
@@ -18,7 +18,7 @@ const win=[
 let state=["","","","","","","","",""];
 let currentPlayer=imageX;
 let player="X";
-let running=false;
+let runningCdn=false;
 const winningMessage = () => `Player ${player} has won!`;
 const drawMessage = () => `Game ended in a draw!`;
 const PlayerTurn = () => `It's ${player}'s turn`;
@@ -28,12 +28,12 @@ function init(){
   cells.forEach(cell=>cell.addEventListener("click",cellClick));
   btnRestart.addEventListener("click",restartGame);
   playStatus.textContent=PlayerTurn();
-  running=true;
+  runningCdn=true;
 }
 
 function cellClick(){
   const index=this.dataset.index;
-  if(state[index]!="" || !running){
+  if(state[index]!="" || ! runningCdn){
     return;
   }
   updateBox(this,index);
@@ -71,10 +71,10 @@ function checkWinner(){
 
   if(isWon){
     playStatus.textContent = winningMessage();
-    running=false;
+    runningCdn=false;
   }else if(!state.includes("")){
     playStatus.textContent= drawMessage();
-    running=false;
+    runningCdn=false;
   }else{
     changePlayer();
   }
@@ -85,7 +85,7 @@ function restartGame(){
     state=["","","","","","","","",""];
     currentPlayer=imageX;
     player="X";
-    running=true;
+    runningCdn=true;
     playStatus.textContent=PlayerTurn();
 
     cells.forEach(cell=>{
